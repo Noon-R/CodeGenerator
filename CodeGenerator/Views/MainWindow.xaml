@@ -36,24 +36,13 @@
         <!--  If you make user choose 'OK or Cancel' closing Window, then please use Window Close cancel Behavior.  -->
 
     </behaviors:Interaction.Triggers>
-    <DockPanel>
-        <Grid DockPanel.Dock="Left" Width="200">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <Button Grid.Row="0"/>
-        </Grid>
-        <Grid DockPanel.Dock="Bottom">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Button Grid.Row="0"/>
-        </Grid>
-    </DockPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <v:EditorMainView/>
+    </Grid>
     
     
 </Window>
