@@ -4,42 +4,90 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CodeGenerator.Views"
+             xmlns:app="clr-namespace:app"
+             xmlns:ui="http://schemas.modernwpf.com/2019"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
 
-        <Grid DockPanel.Dock="Top" Height="20">
+    <UserControl.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" >
+
             <Grid.RowDefinitions>
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            
-            <StackPanel Orientation="Horizontal" Grid.Row="0">
-                <!--<Button Width="75" Command="{Binding }}">Export</Button>-->
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Background="DimGray">
+                <Button Margin="3,0,0,0">
+                    <Run Foreground="WhiteSmoke" Text="Export" FontSize="12"/>
+                </Button>
             </StackPanel>
         </Grid>
 
-        <Grid DockPanel.Dock="Left" Width="100">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+        <Grid DockPanel.Dock="Left" Background="#2A2A2A">
+            <StackPanel Orientation="Vertical">
 
-                <StackPanel Grid.Row="0" Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Name" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" TextChanged="TextBox_TextChanged"/>
+                </Grid>
 
-                </StackPanel>
-                <GridSplitter Grid.Row="1"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Width" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Column="1" Width="100" VerticalAlignment="Center" TickFrequency="1"/>
+                    <TextBlock Grid.Column="2" Text="0" Foreground="WhiteSmoke" TextAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
 
-                <ListView>
+                <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="2" Background="DarkGray"/>
 
-                </ListView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Height" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Column="1" Width="100" VerticalAlignment="Center" TickFrequency="1"/>
+                    <TextBlock Grid.Column="2" Text="0" Foreground="WhiteSmoke" TextAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
 
-            </Grid>
+                <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="2" Background="DarkGray"/>
+
+                <ListBox x:Name="Palette">
+                    
+                </ListBox>
+            </StackPanel>
+
         </Grid>
 
-        <Grid DockPanel.Dock="Right">
+        <GridSplitter DockPanel.Dock="Left" Width="2" Background="DarkGray"/>
 
+        <Grid DockPanel.Dock="Right" Background="#2A2A2A">
+            <TabControl>
+                <TabItem Header="CellType">
+                    <Canvas x:Name ="StageGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Rectangle Fill="#FFF4F4F5" Height="100" Stroke="Black" Width="100" Canvas.Left="63" Canvas.Top="59"/>
+
+                    </Canvas>
+                </TabItem>
+                <TabItem Header="Floor">
+                    <TextBlock Grid.Column="0" Text="Height" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
+                </TabItem>
+            </TabControl>
         </Grid>
+
     </DockPanel>
 </UserControl>

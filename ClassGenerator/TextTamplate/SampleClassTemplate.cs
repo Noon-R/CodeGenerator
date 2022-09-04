@@ -32,38 +32,13 @@ namespace ClassGenerator.TextTamplate
                     "ta = new int[,]{\r\n\t\t\t");
             
             #line 15 "D:\0_Data\Developer\C#_works\CodeGenerator\ClassGenerator\TextTamplate\SampleClassTemplate.tt"
- for (int i = 0; i < _Data.GetLength(0); i++) { 
+
+			WriteArray(_Data); 
+			
             
             #line default
             #line hidden
-            this.Write("{");
-            
-            #line 15 "D:\0_Data\Developer\C#_works\CodeGenerator\ClassGenerator\TextTamplate\SampleClassTemplate.tt"
- for (int j = 0; j < _Data.GetLength(1); j++) { 
-            
-            #line default
-            #line hidden
-            
-            #line 15 "D:\0_Data\Developer\C#_works\CodeGenerator\ClassGenerator\TextTamplate\SampleClassTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_Data[i,j]));
-            
-            #line default
-            #line hidden
-            this.Write(",");
-            
-            #line 15 "D:\0_Data\Developer\C#_works\CodeGenerator\ClassGenerator\TextTamplate\SampleClassTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("},\r\n\t\t");
-            
-            #line 16 "D:\0_Data\Developer\C#_works\CodeGenerator\ClassGenerator\TextTamplate\SampleClassTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t};\r\n\t}\r\n}");
+            this.Write("\t\t};\r\n\t}\r\n}\t\t   ");
             return this.GenerationEnvironment.ToString();
         }
     }

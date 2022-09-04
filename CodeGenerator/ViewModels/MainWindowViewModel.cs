@@ -15,6 +15,10 @@ namespace CodeGenerator.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
+
+        //public StageEditorViewModel StageEditorViewModel => _StageEditorViewModel;
+        //private StageEditorViewModel _StageEditorViewModel = new StageEditorViewModel();
+
         // Some useful code snippets for ViewModel are defined as l*(llcom, llcomn, lvcomm, lsprop, etc...).
         public void Initialize()
         {
