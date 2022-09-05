@@ -11,7 +11,15 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
+
+            <DataTemplate x:Key="CellPalette" DataType="vm:CellPaletteData">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Fill="{Binding Brush}" Height="10" Width="10"/>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" TextAlignment="Right" Foreground="WhiteSmoke"><Run Language="ja-jp" Text="{Binding CellType}"/></TextBlock>
+                </StackPanel>
+            </DataTemplate>
         </ResourceDictionary>
+
     </UserControl.Resources>
 
     <DockPanel>
@@ -22,7 +30,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" Background="DimGray">
-                <Button Margin="3,0,0,0">
+                <Button Margin="3,0,0,0" Command="{Binding ExportDataCommand}">
                     <Run Foreground="WhiteSmoke" Text="Export" FontSize="12"/>
                 </Button>
             </StackPanel>
@@ -47,8 +55,8 @@
                         <ColumnDefinition Width="25"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Width" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
-                    <Slider Grid.Column="1" Width="100" VerticalAlignment="Center" TickFrequency="1"/>
-                    <TextBlock Grid.Column="2" Text="0" Foreground="WhiteSmoke" TextAlignment="Left" VerticalAlignment="Center"/>
+                    <Slider Grid.Column="1" Width="100" VerticalAlignment="Center" TickFrequency="1" Value="{Binding Width}"/>
+                    <TextBlock Grid.Column="2" Foreground="WhiteSmoke" TextAlignment="Left" VerticalAlignment="Center" Text="{Binding Width}"/>
                 </Grid>
 
                 <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="2" Background="DarkGray"/>
@@ -60,13 +68,13 @@
                         <ColumnDefinition Width="25"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Height" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
-                    <Slider Grid.Column="1" Width="100" VerticalAlignment="Center" TickFrequency="1"/>
-                    <TextBlock Grid.Column="2" Text="0" Foreground="WhiteSmoke" TextAlignment="Left" VerticalAlignment="Center"/>
+                    <Slider Grid.Column="1" Width="100" VerticalAlignment="Center" TickFrequency="1" Value="{Binding Height}"/>
+                    <TextBlock Grid.Column="2" Foreground="WhiteSmoke" TextAlignment="Left" VerticalAlignment="Center" Text="{Binding Height}"/>
                 </Grid>
 
                 <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="2" Background="DarkGray"/>
 
-                <ListBox x:Name="Palette">
+                <ListBox x:Name="Palette" ItemsSource = "{Binding PaletteData}" ItemTemplate="{StaticResource CellPalette}" SelectedItem="{Binding SelectedPalette}">
                     
                 </ListBox>
             </StackPanel>
@@ -78,13 +86,12 @@
         <Grid DockPanel.Dock="Right" Background="#2A2A2A">
             <TabControl>
                 <TabItem Header="CellType">
-                    <Canvas x:Name ="StageGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Rectangle Fill="#FFF4F4F5" Height="100" Stroke="Black" Width="100" Canvas.Left="63" Canvas.Top="59"/>
+                    <Canvas x:Name ="StageGrid" SnapsToDevicePixels="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="StageGrid_Loaded" SizeChanged="StageGrid_SizeChanged">
 
                     </Canvas>
                 </TabItem>
                 <TabItem Header="Floor">
-                    <TextBlock Grid.Column="0" Text="Height" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="0"  Text="Height" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Center"/>
                 </TabItem>
             </TabControl>
         </Grid>

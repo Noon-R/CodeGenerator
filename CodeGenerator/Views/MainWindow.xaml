@@ -40,7 +40,7 @@
     </behaviors:Interaction.Triggers>
 
     <Grid>
-        <v:EditorMainView DataContext="{Binding StageEditorViewModel}"/>
+        <v:EditorMainView DataContext="{Binding StageDataViewModel}"/>
     </Grid>
     
     

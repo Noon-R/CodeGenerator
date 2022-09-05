@@ -16,12 +16,39 @@ namespace CodeGenerator.ViewModels
     public class MainWindowViewModel : ViewModel
     {
 
-        //public StageEditorViewModel StageEditorViewModel => _StageEditorViewModel;
-        //private StageEditorViewModel _StageEditorViewModel = new StageEditorViewModel();
+        public Livet.Commands.ViewModelCommand OnClosedWindowCommand
+        {
+            get {
+                if (_OnClosedWindowCommand == null) {
+                    _OnClosedWindowCommand = new ViewModelCommand(Dispose);
+                }
+                return _OnClosedWindowCommand;
+            }
+        }
+        public StageDataViewModel StageDataViewModel => _StageDataViewModel;
 
-        // Some useful code snippets for ViewModel are defined as l*(llcom, llcomn, lvcomm, lsprop, etc...).
+        private Livet.Commands.ViewModelCommand _OnClosedWindowCommand;
+        private StageDataViewModel _StageDataViewModel;
+        private StageDataModel _StageDataModel;
+
+        public MainWindowViewModel() {
+            Initialize();
+        }
+
         public void Initialize()
         {
+            bool isDesignMode = (bool)System.ComponentModel.DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(System.Windows.DependencyObject)).DefaultValue;
+            if (isDesignMode) {
+                return;
+            }
+
+            _StageDataModel = new StageDataModel();
+            _StageDataViewModel = new StageDataViewModel(_StageDataModel);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
         }
     }
 }

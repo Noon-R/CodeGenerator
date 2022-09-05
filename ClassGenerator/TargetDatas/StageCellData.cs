@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassGenerator.TargetDatas
 {
-    public class StageData
+    public class StageCellData
     {
         public int[,] _CellDatas;
         public int[,] _FloorDatas;
@@ -15,12 +15,15 @@ namespace ClassGenerator.TargetDatas
 
     public enum CellType { 
         None,
-        Wall,
-        Breakable,
-        Gimmick,
-        Enemy,
         Start,
         Goal,
+        Wall,
+        Enemy,
+        Obstacle,
+        Breakable,
+        Slope,
+        Gimmick,
+        
         MAX
     }
 
