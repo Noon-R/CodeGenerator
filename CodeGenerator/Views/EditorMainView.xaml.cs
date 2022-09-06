@@ -140,21 +140,6 @@ namespace CodeGenerator.Views
 
                     StageGrid.Children.Add(path);
 
-                    //var rect = new Rectangle();
-
-                    //rect.Width = size;
-                    //rect.Height = size;
-
-                    //rect.RadiusX = radius;
-                    //rect.RadiusY = radius;
-
-                    //var color = Colors.Black;
-                    //rect.Fill = new SolidColorBrush(color);
-
-                    //Canvas.SetLeft(rect, size * i +1);
-                    //Canvas.SetTop(rect, size * j +1);
-
-                    //StageGrid.Children.Add(rect);
                 }
             }
 
